@@ -51,7 +51,7 @@ fn get_similarity_score(first_ids: &Vec<isize>, second_ids: &Vec<isize>) -> isiz
     }
 
     first_ids.iter().fold(0, |acc, id| {
-        acc + (id * second_ids_counts.get(id).copied().unwrap_or(0))
+        acc + (id * second_ids_counts.get(id).unwrap_or(&0))
     })
 }
 
