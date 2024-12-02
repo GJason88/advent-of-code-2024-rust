@@ -5,7 +5,7 @@ use std::{
     path::Path,
 };
 
-type Pair = (isize, isize);
+type Pair = (i32, i32);
 
 fn main() {
     let lines = read_lines("src/bin/day1/input").unwrap();
@@ -30,7 +30,7 @@ where
     Ok(io::BufReader::new(file).lines())
 }
 
-fn get_sorted_ids(lines: Lines<BufReader<File>>) -> (Vec<isize>, Vec<isize>) {
+fn get_sorted_ids(lines: Lines<BufReader<File>>) -> (Vec<i32>, Vec<i32>) {
     let mut first_ids = vec![];
     let mut second_ids = vec![];
     for line in lines {
@@ -44,7 +44,7 @@ fn get_sorted_ids(lines: Lines<BufReader<File>>) -> (Vec<isize>, Vec<isize>) {
     (first_ids, second_ids)
 }
 
-fn get_similarity_score(first_ids: &Vec<isize>, second_ids: &Vec<isize>) -> isize {
+fn get_similarity_score(first_ids: &Vec<i32>, second_ids: &Vec<i32>) -> i32 {
     let mut second_ids_counts = HashMap::new();
     for id in second_ids {
         *second_ids_counts.entry(id).or_insert(0) += 1;
@@ -55,7 +55,7 @@ fn get_similarity_score(first_ids: &Vec<isize>, second_ids: &Vec<isize>) -> isiz
     })
 }
 
-fn get_total_distance(first_ids: &Vec<isize>, second_ids: &Vec<isize>) -> isize {
+fn get_total_distance(first_ids: &Vec<i32>, second_ids: &Vec<i32>) -> i32 {
     first_ids
         .iter()
         .zip(second_ids)
